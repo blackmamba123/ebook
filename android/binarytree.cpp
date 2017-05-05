@@ -1,69 +1,74 @@
-/*
- * binarytree.cpp
- *
- *  Created on: 2017-4-26
- *      Author: black_mammba
- */
-using namespace std;
-#include "..\header\binarytree.h"
+//
+// Created by n5320 on 2017/4/26.
+//
+#include "binarytree.h"
+#include "mylog.h"
 
 int BinaryTree::m =0;
 int BinaryTree::n =0;
 
- void BinaryTree::create_BTree(int n){
+void BinaryTree::create_BTree(int n){
     tree* newNode = new tree();
     newNode->data = n;
     newNode->leftNode = NULL;
     newNode->rightNode = NULL;
     if(root == NULL){
-    	root = newNode;
+        root = newNode;
     }else{
-    	tree* back;
+        tree* back;
         tree* current = root;
         while(current != NULL){
-        	back = current;
-        	if(current->data > n){
-        		current = current->leftNode;
-        	}else{
-        		current = current->rightNode;
-        	}
+            back = current;
+            if(current->data > n){
+                current = current->leftNode;
+            }else{
+                current = current->rightNode;
+            }
         }
 
         if(back->data > n){
-        	back->leftNode = newNode;
+            back->leftNode = newNode;
         }else{
-        	back->rightNode = newNode;
+            back->rightNode = newNode;
         }
     }
- }
+}
 
- void BinaryTree::preOrderSearchTree(tree* tmp){
-	 if(tmp == NULL){
-		// cout<<"preOrderSearchTree return root == NULL"<<endl;
-		 return;
-	 }
+void BinaryTree::preOrderSearchTree(tree* tmp){
+    if(tmp == NULL){
+        return;
+    }
 
-     cout<<tmp->data<<" , ";
-     preOrderSearchTree(tmp->leftNode);
-     preOrderSearchTree(tmp->rightNode);
- }
+    LOGD("%d , ",tmp->data);
+    preOrderSearchTree(tmp->leftNode);
+    preOrderSearchTree(tmp->rightNode);
+}
 
- void BinaryTree::middleOrderSearchTree(tree* tmp){
-	 if(tmp == NULL){
-		 return;
-	 }
+void BinaryTree::middleOrderSearchTree(tree* tmp){
+    if(tmp == NULL){
+        return;
+    }
 
-	 middleOrderSearchTree(tmp->leftNode);
-     cout<<tmp->data<<" , ";
-     middleOrderSearchTree(tmp->rightNode);
- }
+    middleOrderSearchTree(tmp->leftNode);
+    LOGD("%d , ",tmp->data);
+    middleOrderSearchTree(tmp->rightNode);
+}
 
- void BinaryTree::followOrderSearchTree(tree* tmp){
-	 if(tmp == NULL){
-			 return;
-		 }
+void BinaryTree::followOrderSearchTree(tree* tmp){
+    if(tmp == NULL){
+        return;
+    }
 
-	 followOrderSearchTree(tmp->leftNode);
-	 followOrderSearchTree(tmp->rightNode);
-	 cout<<tmp->data<<" , ";
- }
+    followOrderSearchTree(tmp->leftNode);
+    followOrderSearchTree(tmp->rightNode);
+    LOGD("%d , ",tmp->data);
+}
+
+int BinaryTree::count(tree * tmp){
+    if(tmp == NULL){
+        return 0;
+    } else{
+        return count(tmp->leftNode) + count(tmp->rightNode) + 1;
+    }
+}
+

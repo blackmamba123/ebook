@@ -1,26 +1,30 @@
-#ifndef BINARY_TREE_H
-#define BINARY_TREE_H
-#endif
+//
+// Created by n5320 on 2017/4/26.
+//
+
+#ifndef MYNDKPROJECT_BINARYTREE_H
+#define MYNDKPROJECT_BINARYTREE_H
+
+#endif //MYNDKPROJECT_BINARYTREE_H
 
 #include<iostream>
 typedef struct tree{
-	int data;
-	tree* leftNode;
-	tree* rightNode;
+    int data;
+    tree* leftNode;
+    tree* rightNode;
 };
 
 class BinaryTree{
-	static int m;
-	static int n;
+    static int m;
+    static int n;
 public:
-	BinaryTree(){
-				root = NULL;
-			};
-	tree* root;
-	void create_BTree(int);
-	void preOrderSearchTree(tree*);//ÏÈĞò±éÀú¶ş²æÊ÷
-	void middleOrderSearchTree(tree*);//ÖĞĞò±éÀú¶ş²æÊ÷
-	void followOrderSearchTree(tree*);//ºóĞò±éÀú¶ş²æÊ÷
-	void count(tree *);//¼ÆËã¶ş²æÊ÷µÄ¸öÊı
-	void findLeaf(tree *);//¼ÆËã¶ş²æÊ÷Ò¶×ÓµÄ¸öÊı
+    BinaryTree(){
+        root = NULL;
+    };
+    tree* root;
+    void create_BTree(int);
+    void preOrderSearchTree(tree*);//å…ˆåºéå†äºŒå‰æ ‘
+    void middleOrderSearchTree(tree*);//ä¸­åºéå†äºŒå‰æ ‘
+    void followOrderSearchTree(tree*);//ååºéå†äºŒå‰æ ‘
+    int count(tree *);//è®¡ç®—äºŒå‰æ ‘çš„ä¸ªæ•°
 };
